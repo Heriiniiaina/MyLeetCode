@@ -1,10 +1,17 @@
 function myPow(x: number, n: number): number {
-    let pow:number = 1
-    let isPositive:boolean = true
-    if(n<0){
-        n = Math.abs(n)
-        isPositive = false
+    if (n === 0) return 1;
+
+    let isPositive = n > 0; 
+    n = Math.abs(n);
+
+    let result = 1;
+    while (n > 0) {
+        if (n % 2 === 1) {
+            result *= x; 
+        }
+        x *= x; 
+        n = Math.floor(n / 2); 
     }
-   
-    return isPositive ? Math.pow(x,n) : (1/Math.pow(x,n))
-};
+
+    return isPositive ? result : 1 / result; 
+}
